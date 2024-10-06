@@ -1,0 +1,21 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}Delete comment{% endblock %}
+
+{% block content %}
+
+
+    <div class="container " style="width: fit-content; margin-top: 200px">
+        <h2>Delete Comment</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.text }}
+            </div>
+            <button type="submit" class="btn">Confirm</button>
+            <a href="{% url 'forum:profile' %}" class="btn">Cancel</a>
+        </form>
+
+
+    </div>
+{% endblock %}

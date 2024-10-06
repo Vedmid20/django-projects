@@ -1,0 +1,31 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="container" style="width: fit-content; margin-top: 200px">
+        <h1>Login</h1>
+
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">  <!-- Змінено на alert-danger для помилок -->
+                {% for message in messages %}
+                    {{ message }}<br>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputName1" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp">
+                <div id="passwordHelp" class="form-text">We'll never share your password with anyone else.</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock %}

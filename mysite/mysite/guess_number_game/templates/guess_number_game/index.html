@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'guess_number_game/css/style.css' %}">
+    <title>Main</title>
+</head>
+<body>
+
+
+    <main>
+        <a href="{% url 'home' %}" class="btn" id="back">Back to main</a>
+        <div class="">
+            <h1>Game "Guess the number"</h1>
+        <hr>
+    <h2 id="result-message">Number from {{ a }} to {{ b }}</h2>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <form method="post" id="guess-form">
+        {% csrf_token %}
+        <input type="number" id="guess" name="guess" required placeholder="Enter number">
+        <br>
+        <button type="submit" class="btn">Check</button>
+    </form>
+        </div>
+    </main>
+
+    <script src="{% static 'guess_number_game/js/script.js' %}"></script>
+</body>
+</html>

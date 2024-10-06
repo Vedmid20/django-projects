@@ -1,0 +1,22 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}Create comment{% endblock %}
+
+{% block content %}
+
+<div class="container " style="width: fit-content; margin-top: 200px">
+  <h1>Add Comment</h1>
+  <form method="post">
+    {% csrf_token %}
+        <div class="form-group">
+              {{ form.text }}
+            <div class="error">
+            {{ form.text.errors }}
+        </div>
+        </div>
+    <button type="submit" class="btn">Submit</button>
+  </form>
+
+</div>
+
+  {% endblock %}
