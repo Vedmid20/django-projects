@@ -1,0 +1,62 @@
+{% extends 'learn_english/base.html' %}
+
+{% block title%}Reading{% endblock %}
+
+{% block content %}
+
+    <main>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <h1 class="logo" id="main-logo" style="margin-top: 50px">Last summer - Минуле літо</h1>
+                    <div id="text-container">
+                        <p id="english-text">
+                            Last summer, my family and I decided to go on a road trip across the country. It was one of the best experiences of my life.
+                            We started our journey early in the morning, packing everything we needed into our car, and set off with excitement.
+                            The road stretched ahead of us, with beautiful landscapes passing by. The first destination was a small town nestled in the mountains,
+                            known for its peaceful atmosphere and friendly locals. We spent a few days there, hiking through the forests and enjoying the stunning views from the mountain peaks.
+
+                            As we continued our trip, we visited various national parks, each more breathtaking than the last. In one of the parks, we saw a majestic waterfall that fell from the cliffs into a crystal-clear lake below.
+                            The sound of the water crashing down was mesmerizing, and we spent hours just sitting there, admiring the beauty of nature.
+                            Along the way, we also encountered wildlife – deer grazing in the fields, eagles soaring above, and even a bear that crossed the road in front of us!
+
+                            Every night, we stopped at a different place, whether it was a cozy cabin in the woods or a hotel in a bustling city. One of my favorite nights was when we camped under the stars in the desert.
+                            The sky was so clear that we could see thousands of stars twinkling above us, and it felt like we were part of the universe itself.
+                            The next morning, we woke up early to watch the sunrise over the dunes, and the sight was nothing short of magical.
+
+                            The trip not only brought us closer as a family but also allowed us to explore places we had never seen before.
+                            It was a reminder of how vast and beautiful our country is and how much there is still to discover.
+                            I will always cherish the memories of that road trip, and I hope we can do something similar again in the future.
+                        </p>
+
+                        <p id="ukrainian-text" style="display: none;">
+                            Минулого літа моя сім'я і я вирішили вирушити в подорож по країні на машині. Це був один із найкращих досвідів у моєму житті.
+                            Ми розпочали нашу подорож рано вранці, спакувавши все необхідне в машину, і вирушили з величезним ентузіазмом.
+                            Дорога простягалася перед нами, а з обох боків змінювалися прекрасні пейзажі. Першим пунктом призначення було маленьке містечко в горах,
+                            відоме своєю спокійною атмосферою та дружелюбними місцевими жителями. Ми провели там кілька днів, гуляючи лісами та насолоджуючись приголомшливими краєвидами з вершин гір.
+
+                            Продовжуючи нашу подорож, ми відвідали кілька національних парків, кожен із яких був більш вражаючим за попередній. В одному з парків ми побачили величний водоспад,
+                            який спадав зі скель у кришталево чисте озеро. Звук води, що обрушувалася вниз, зачаровував, і ми провели кілька годин, просто сидячи та милуючись красою природи.
+                            Під час подорожі ми також зустрічали диких тварин – оленів, що паслися на полях, орлів, які ширяли в небі, і навіть ведмедя, який перебіг нам дорогу!
+
+                            Кожного вечора ми зупинялися в іншому місці – чи то в затишній хатинці в лісі, чи то в готелі у великому місті. Однією з моїх улюблених ночей була та, коли ми розбили намет у пустелі під зорями.
+                            Небо було настільки чистим, що можна було побачити тисячі зірок, які мерехтіли над нами, і це було схоже на те, що ми є частиною самого Всесвіту.
+                            Наступного ранку ми прокинулися рано, щоб побачити, як сонце сходить над дюнами, і цей вид був просто чарівним.
+
+                            Ця подорож не тільки зблизила нас як сім'ю, але й дозволила нам дослідити місця, яких ми раніше ніколи не бачили.
+                            Це було нагадування про те, наскільки наша країна велика і красива, і скільки ще є для нас невідомого.
+                            Я завжди буду зберігати в пам'яті спогади про цю подорож, і сподіваюся, що в майбутньому ми зможемо здійснити щось подібне знову.
+                        </p>
+                    </div>
+
+                <button id="translate-button" onclick="toggleTranslation()" class="btn">Translate text</button>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'learn_english/base.html' %}
+
+{% block title %}Vocabulary{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="container description">
+        <div class="row">
+            <div class="col-12">
+
+                {% for category, words in words_by_category.items %}
+                    <h2 class="category">{{ category.name }}</h2>
+                    <hr>
+                    <div class="row">
+                        {% for word in words %}
+                        <div class="col-md-4">
+                            <div class="card mb-3 flip-card" onclick="flipCard(this)">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ word.word }}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div class="card-body">
+                                            <h5 class="card-text">{{ word.translate }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'library/css/style.css' %}">
+    <title>{{ author.first_name }} {{ author.last_name }}</title>
+</head>
+<body>
+    <h1 class="author">Books of {{ author.first_name }} {{ author.last_name }}</h1>
+
+    <main>
+
+    <ul id="book-list">
+        {% for book in author.book_set.all %}
+            <li class="book-item" data-title="{{ book.make_name }} {{ book.title }} {{ book.realise }}">{{ book.title }} ({{ book.realise }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'library:home' %}" class="btn">Back to home</a>
+    </main>
+
+
+    <script src="{% static 'library/js/script.js' %}"></script>
+</body>
+</html>
