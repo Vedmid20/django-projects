@@ -22,5 +22,7 @@ urlpatterns = [
     path('forum/', include('forum.urls')),
     path('guess_number_game/', include('guess_number_game.urls')),
     path('learn_english/', include('learn_english.urls')),
+    path('library/', include('library.urls')),
+    path('calculator/', include('calculator.urls')),
     path('', include('main.urls')),
 ]

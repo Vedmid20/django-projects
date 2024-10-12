@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
-
 
 def index(request):
-    return render(request, 'main/index.html')
+    visits = int(request.COOKIES.get('visits', 0))
+    visits += 1
+    response = render(request, 'main/index.html', {'visits': visits})
+    response.set_cookie('visits', visits)
+
+    return response

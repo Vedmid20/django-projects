@@ -4,8 +4,10 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/mysite/mysite/forum" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mysite/mysite/guess_number_game" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/mysite/mysite/learn_english" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/mysite/mysite/learn_english" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mysite/mysite/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mysite/mysite/library" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mysite/mysite/calculator" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
     </content>
     <orderEntry type="inheritedJdk" />

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'guess_number_game',
     'main',
     'learn_english',
+    'library',
+    'calculator',
 ]
 
 MIDDLEWARE = [
@@ -131,7 +133,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "forum/static",
+    BASE_DIR / "/static",
 ]
 
 # Default primary key field type
