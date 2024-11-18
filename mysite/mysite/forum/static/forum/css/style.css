@@ -1,0 +1,124 @@
+*{
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+:root{
+    --primary-color: rgba(21, 21, 21, 0.24);
+    --second-color: #5ddac7;
+    --black--color: #151515;
+    --error-color: #e50000;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    background-color: var(--black--color);
+    gap: 150px;
+    padding: 15px;
+}
+
+.header a{
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    transition: .2s ease-in;
+}
+
+.header a:hover{
+    color: var(--black--color);
+    background-color: var(--second-color);
+}
+
+.info{
+    margin-top: 30px;
+    padding: 100px;
+}
+
+.info .comment{
+    border: var(--black--color) solid 1px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px 52px 52px 5px;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+h2{
+    text-align: center;
+    font-size: 42px;
+    color: var(--second-color)
+}
+
+h4{
+    font-size: 27px;
+}
+
+h1{
+    text-align: center;
+    font-size: 42px;
+    margin-top: 40px;
+}
+
+.btn{
+    text-decoration: none;
+    color: white;
+    background-color: var(--black--color);
+    padding: 7px 22px;
+    border-radius: 5px;
+    font-size: 21px;
+    transition: .2s ease-in;
+    border: none;
+}
+
+.btn:hover{
+    background-color: var(--second-color);
+    color: var(--black--color);
+}
+
+.form-group{
+    margin-bottom: 5px;
+
+    width: 15vw;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 300px;
+    height: 40px;
+    padding: 4px 12px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+}
+
+.form-group textarea{
+    width: 300px;
+    font-size: 30px;
+    border: solid 1px var(--primary-color);
+    border-radius: 5px;
+    padding: 10px;
+    height: 300px;
+    min-height: 250px;
+    margin-top: 15px;
+}
+
+.form-group .error{
+    font-size: 15px;
+    word-wrap: unset;
+    color: var(--error-color);
+}
+
+#del-btn:hover{
+    background-color: var(--error-color);
+}

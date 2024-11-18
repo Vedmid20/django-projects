@@ -1,0 +1,85 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ blogpost.title }}{% endblock %}
+
+{% block content %}
+
+    <main>
+        <div id="detail">
+            <h1>{{ blogpost.title }} by {{ blogpost.owner }}</h1>
+            <hr>
+            <h4>{{ blogpost.text }}</h4> <br>
+            <h6>{{ blogpost.tags }}</h6>
+            <h6><i>Created on {{ blogpost.created_at }}</i></h6>
+            <h6><i>Last update on {{ blogpost.updated_at }}</i></h6>
+            {% if blogpost.status == 'P' %}
+                <h6><i>Published on {{ blogpost.published_at }}</i></h6>
+            {% else %}
+                <h6></h6>
+            {% endif %}
+            {% if blogpost.status == 'P' %}
+                <h6>Status: <span class="badge bg-primary">{{ blogpost.get_status_display }}</span></h6>
+            {% else %}
+                <h6>Status: <span class="badge bg-secondary">{{ blogpost.get_status_display }}</span></h6>
+            {% endif %}
+
+
+            <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 100px 0 100px 0">
+                <form method="post" style="margin: 20px 0;" action="{% url 'blog:share-post' blogpost.slug %}">
+                    <h2>Share</h2>
+                    {% csrf_token %}
+                    {{ email_form.as_p }}
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+
+
+            <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 100px 0 100px 0">
+                <form method="post" style="margin: 20px 0;">
+                    <h2>Leave a comment</h2>
+                    {% csrf_token %}
+                    {{ form.text }}
+                    <input type="submit" value="Create comment">
+                </form>
+            </div>
+
+            <hr>
+            <div style="display:flex; justify-content: center;">
+                <h2 style="margin-bottom: 30px">Comments</h2>
+            </div>
+
+            {% for comment in page_obj %}
+            <div class="comment">
+                <h3>{{ comment.owner }}</h3>
+                <p>{{ comment.text }}</p>
+                <h6><i>{{ comment.created_at }}</i></h6>
+
+                {% if comment.owner == request.user %}
+                    <div style="margin-top: 10px;">
+                    </div>
+                {% endif %}
+            </div>
+            {% empty %}
+                <p>No comments yet.</p>
+            {% endfor %}
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}" class="btn" style="width: 60px">&laquo;</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="btn" style="width: 60px">&raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+        </div>
+    </main>
+
+{% endblock %}

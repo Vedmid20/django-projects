@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-12">
+
+                <a href="{% url 'blog:posts' %}">Posts</a>
+                <a href="{% url 'blog:my-posts' %}">My posts</a>
+                <a href="{% url 'blog:create-post' %}">Create blog</a>
+                <a class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Search posts
+                </a>
+                <a href="{% url 'blog:register' %}">Sign Up</a>
+                <a href="{% url 'blog:login' %}">Login</a>
+                <a href="{% url 'home' %}">Back to main</a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                {% block content %}{% endblock %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Find post what you need</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="d-flex" method="get" action="{% url 'blog:posts' %}">
+                    <input class="form-control me-2" type="search" placeholder="Search by tag" aria-label="Search" name="tag" value="{{ request.GET.tag }}">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'blog/js/script.js' %}"></script>
+</body>
+</html>
