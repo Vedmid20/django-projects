@@ -13,7 +13,7 @@ urlpatterns = [
     path('blog/<slug:slug>/', BlogDetailView.as_view(), name='post'),
     path('update_post/<slug:slug>/', BlogUpdateView.as_view(), name='update-post'),
     path('delete_post/<slug:slug>/', BlogDeleteView.as_view(), name='delete-post'),
-    path('update_comment/<slug:slug>/<slug:comment_slug>/', CommentUpdateView.as_view(), name='update-comment'),
-    path('delete_comment/<slug:slug>/<slug:comment_slug>/', CommentDeleteView.as_view(), name='delete-comment'),
+    path('update_comment/<slug:slug>/', CommentUpdateView.as_view(), name='update-comment'),
+    path('delete_comment/<slug:slug>/', CommentDeleteView.as_view(), name='delete-comment'),
     path('share_post/<slug:slug>', share_post, name='share-post')
 ]

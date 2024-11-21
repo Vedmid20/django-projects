@@ -6,7 +6,12 @@
 
     <main>
         <div id="detail">
-            <h1>{{ blogpost.title }} by {{ blogpost.owner }}</h1>
+            <div id="header-of-post">
+               <h1>{{ blogpost.title }} by {{ blogpost.owner }}</h1>
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalEmail" style="width: 200px;">
+                  Send email
+                </button>
+            </div>
             <hr>
             <h4>{{ blogpost.text }}</h4> <br>
             <h6>{{ blogpost.tags }}</h6>
@@ -22,16 +27,6 @@
             {% else %}
                 <h6>Status: <span class="badge bg-secondary">{{ blogpost.get_status_display }}</span></h6>
             {% endif %}
-
-
-            <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 100px 0 100px 0">
-                <form method="post" style="margin: 20px 0;" action="{% url 'blog:share-post' blogpost.slug %}">
-                    <h2>Share</h2>
-                    {% csrf_token %}
-                    {{ email_form.as_p }}
-                    <input type="submit" value="Send">
-                </form>
-            </div>
 
 
             <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 100px 0 100px 0">
@@ -56,6 +51,7 @@
 
                 {% if comment.owner == request.user %}
                     <div style="margin-top: 10px;">
+                        <a href="{% url 'blog:update-comment' blogpost.slug %}">d</a>
                     </div>
                 {% endif %}
             </div>
@@ -77,6 +73,27 @@
                         <a href="?page={{ page_obj.next_page_number }}" class="btn" style="width: 60px">&raquo;</a>
                     {% endif %}
                 </span>
+            </div>
+
+            <div class="modal fade" id="exampleModalEmail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send email</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <form method="post" style="margin: 20px 0;" action="{% url 'blog:share-post' blogpost.slug %}">
+                            <h2>Share</h2>
+                            {% csrf_token %}
+                            {{ email_form.as_p }}
+                            <input type="submit" value="Send">
+                        </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
         </div>

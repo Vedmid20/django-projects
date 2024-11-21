@@ -244,3 +244,11 @@ form h2 {
     width: 1000px;
     margin: 0 auto 30px;
 }
+
+#header-of-post{
+    display: flex;
+    justify-content: space-between;
+    button{
+        margin-top: 5px
+    }
+}

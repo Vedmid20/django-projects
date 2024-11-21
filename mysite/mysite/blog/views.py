@@ -183,12 +183,12 @@ def share_post(request, slug, **kwargs):
     form = EmailForm(request.POST)
     if form.is_valid():
         data = form.cleaned_data
-        data.text += f'Post url: {post_abs_url}'
+        data['text'] += f'Post url: {post_abs_url}'
         send_mail(
-            data.subject,
-            data.text,
+            data['subject'],
+            data['text'],
             "from@example.com",
-            [data.to],
+            [data["to"]],
             fail_silently=False,
         )
         print(f'@@@ Sending email to {data}')
