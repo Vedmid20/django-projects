@@ -1,0 +1,28 @@
+{% extends 'learn_english/base.html' %}
+
+{% block title%}Home{% endblock %}
+
+{% block content %}
+
+    <main>
+        <div class="container description">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="logo" id="main-logo">Welcome! This is TrioLingo</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <p>Welcome to our English learning platform, where you can take your language skills to the next level! Whether you're a beginner or an advanced learner, we offer a variety of tools and resources to help you master English in a fun, interactive, and efficient way.
+                </p>
+            </div>
+            <div class="col-12">
+                <a href="{%  url 'learn_english:about' %}" class="btn">Read more there</a>
+            </div>
+        </div>
+    </div>
+    </main>
+
+
+{% endblock %}

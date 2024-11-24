@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'library/css/style.css' %}">
+    <title>Library</title>
+</head>
+<body>
+
+    <h1>Authors</h1>
+
+
+    <main>
+        <a href="{% url 'home' %}" class="btn">Back to main</a>
+        <hr>
+        {% for author in authors %}
+            <a href="{% url 'library:author_detail' author.pk %}" class="btn">
+                {{ author }}
+            </a>
+        {% endfor %}
+
+    </main>
+
+
+</body>
+</html>

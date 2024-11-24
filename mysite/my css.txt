@@ -1,0 +1,6 @@
+colors:
+    --primary-color: rgba(21, 21, 21, 0.24);
+    --second-color: #5ddac7;
+    --black--color: #151515;
+    --error-color: #e50000;
+

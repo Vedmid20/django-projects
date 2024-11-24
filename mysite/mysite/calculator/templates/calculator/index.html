@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%  load static %}
+
+    <link rel="stylesheet" href="{% static 'calculator/css/style.css' %}">
+    <title>Calculator</title>
+</head>
+<body>
+
+    <main>
+        <div class="back-to-main">
+                <a href="{% url 'home' %}" class="btn" id="back">Back to main</a>
+            </div>
+        <div class="calculator">
+
+              <div>
+        <input type="text" id="result" readonly>
+    </div>
+
+        <div>
+            <button class="btn" onclick="appendValue('1')">1</button>
+            <button class="btn" onclick="appendValue('2')">2</button>
+            <button class="btn" onclick="appendValue('3')">3</button>
+            <button class="btn" onclick="appendValue('+')">+</button>
+        </div>
+        <div>
+            <button class="btn" onclick="appendValue('4')">4</button>
+            <button class="btn" onclick="appendValue('5')">5</button>
+            <button class="btn" onclick="appendValue('6')">6</button>
+            <button class="btn" onclick="appendValue('-')">-</button>
+        </div>
+        <div>
+            <button class="btn" onclick="appendValue('7')">7</button>
+            <button class="btn" onclick="appendValue('8')">8</button>
+            <button class="btn" onclick="appendValue('9')">9</button>
+            <button class="btn" onclick="appendValue('*')">*</button>
+        </div>
+        <div>
+            <button class="btn" onclick="clearResult()">C</button>
+            <button class="btn" onclick="appendValue('0')">0</button>
+            <button class="btn" onclick="calculateResult()">=</button>
+            <button class="btn" onclick="appendValue('/')">/</button>
+        </div>
+        </div>
+
+    </main>
+
+    <script src="{% static 'calculator/js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<h1>Profile of {{ request.user.username }}</h1>
+
+<h2 style="margin-bottom: -80px; color: var(--black-color)">Your comments:</h2>
+<div class="info">
+    <div class="comment">
+    {% for comment in comments %}
+        <h4>{{ comment.text }}</h4> <h6>({{ comment.created_at }})</h6>
+
+        <br>
+            <a href="{% url 'forum:change_comment' comment.id %}" class="btn">Edit</a>
+            <a href="{% url 'forum:delete_comment' comment.id %}" class="btn" id="del-btn">Delete</a>
+        <hr>
+
+    {% empty %}
+        <h2>
+            You dont have any comments :(
+        </h2>
+    {% endfor %}
+</div>
+</div>
+
+
+{% endblock %}

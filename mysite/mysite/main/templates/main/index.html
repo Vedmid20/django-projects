@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <title>Main</title>
+</head>
+<body>
+
+    <h1>This is main page, in this page you can go to any pages</h1>
+        <h1 style="font-size: 25px">You visited this page: {{ visits }} times</h1>
+    <hr>
+
+    <main>
+
+            <a href="{% url 'forum:home' %}">Forum</a>
+            <a href="{% url 'guess_number_game:home' %}">Guess number game</a>
+            <a href="{% url 'learn_english:home' %}">Learn english</a>
+            <a href="{% url 'library:home' %}">Library</a>
+            <a href="{% url 'calculator:home' %}">Calculator</a>
+            <a href="{% url 'blog:posts' %}">Blog</a>
+
+    </main>
+
+</body>
+</html>
