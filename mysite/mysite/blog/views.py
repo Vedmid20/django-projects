@@ -2,6 +2,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic.list import ListView
@@ -146,8 +147,11 @@ class UserLoginView(LoginView):
 
 class CommentUpdateView(UpdateView):
     model = CommentForBlogPost
-    success_url = reverse_lazy('blog:post', kwargs={'slug': 'slug_placeholder'})
     fields = ['text']
+
+    def get_success_url(self):
+        post_slug = self.object.post.slug
+        return reverse_lazy('blog:post', kwargs={'slug': post_slug})
 
     def get_queryset(self):
         qset = super().get_queryset()
@@ -157,12 +161,22 @@ class CommentUpdateView(UpdateView):
     def get_object(self, queryset=None):
         slug = self.kwargs.get('slug')
         comment_slug = self.kwargs.get('comment_slug')
-        return get_object_or_404(CommentForBlogPost, slug=comment_slug, blog_post__slug=slug, owner=self.request.user)
+        blog_post = BlogPost.objects.filter(slug=slug).first()
+        if not blog_post:
+            raise Http404("Post not found")
+        comment = blog_post.comments.filter(slug=comment_slug, owner=self.request.user).first()
+        if not comment:
+            raise Http404("Comment not found")
+
+        return comment
 
 
 class CommentDeleteView(DeleteView):
     model = CommentForBlogPost
-    success_url = reverse_lazy('blog:post', kwargs={'slug': 'slug_placeholder'})
+
+    def get_success_url(self):
+        post_slug = self.object.post.slug
+        return reverse_lazy('blog:post', kwargs={'slug': post_slug})
 
     def get_queryset(self):
         qset = super().get_queryset()
@@ -172,12 +186,18 @@ class CommentDeleteView(DeleteView):
     def get_object(self, queryset=None):
         slug = self.kwargs.get('slug')
         comment_slug = self.kwargs.get('comment_slug')
-        return get_object_or_404(CommentForBlogPost, slug=comment_slug, blog_post__slug=slug, owner=self.request.user)
+        blog_post = BlogPost.objects.filter(slug=slug).first()
+        if not blog_post:
+            raise Http404("Post not found")
+        comment = blog_post.comments.filter(slug=comment_slug, owner=self.request.user).first()
+        if not comment:
+            raise Http404("Comment not found")
+
+        return comment
 
 
 @require_POST
 def share_post(request, slug, **kwargs):
-    post_obj = get_object_or_404(BlogPost, slug=slug)
     post_abs_url = reverse('blog:post', kwargs={'slug': slug})
     print('dsa')
     form = EmailForm(request.POST)

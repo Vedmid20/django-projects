@@ -58,22 +58,25 @@ class CommentForBlogPost(models.Model):
    post = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name='comments')
    text = models.CharField(max_length=300)
    created_at = models.DateTimeField(auto_now_add=True)
-   slug = models.SlugField(blank=True, default='spk')
+   slug = models.SlugField(max_length=200, null=False, unique=True, blank=True, verbose_name=_('Slug'))
 
    def save(self, *args, **kwargs):
-      if not self.slug:
-         self.slug = slugify(self.title)
+      if not self.slug or self.text != getattr(self, '_original_text', None):
+         self.slug = slugify(self.text[:10])
          original_slug = self.slug
-         queryset = BlogPost.objects.filter(slug=self.slug)
+         queryset = CommentForBlogPost.objects.filter(slug=self.slug)
          counter = 1
          while queryset.exists():
             self.slug = f"{original_slug}-{counter}"
-            queryset = BlogPost.objects.filter(slug=self.slug)
+            queryset = CommentForBlogPost.objects.filter(slug=self.slug)
             counter += 1
       if self.pk:
-         previos = BlogPost.objects.get(pk=self.pk)
-         if previos.status == BlogPost.Status.DRAFT and self.status == BlogPost.Status.PUBLISHED:
-            self.published_at = timezone.now()
+         try:
+            previos = BlogPost.objects.get(pk=self.pk)
+            if previos.status == BlogPost.Status.DRAFT and self.status == BlogPost.Status.PUBLISHED:
+               self.published_at = timezone.now()
+         except BlogPost.DoesNotExist:
+            previos = None
 
       super().save(*args, **kwargs)
 

@@ -71,12 +71,12 @@ main{
         margin-left: 10px;
         margin-bottom: 10px;
     }
-    #edit{
+    .edit{
         background-color: white;
         color: var(--black-color);
         border: 1px solid var(--black-color);
     }
-    #edit:hover{
+    .edit:hover{
         background-color: var(--second-color);
         border: 1px solid var(--second-color);
     }
@@ -84,6 +84,16 @@ main{
         background-color: var(--error-color);
         color: white;
     }
+}
+
+.edit{
+        background-color: white;
+        color: var(--black-color);
+        border: 1px solid var(--black-color);
+    }
+.edit:hover{
+    background-color: var(--second-color);
+    border: 1px solid var(--second-color);
 }
 
 .pagination{
@@ -119,6 +129,7 @@ main{
 }
 
 .post-info {
+    position: relative;
     border: var(--black-color) solid 1px;
     padding: 15px 50px;
     margin-bottom: 20px;
@@ -126,15 +137,24 @@ main{
     word-wrap: break-word;
     word-break: break-word;
     background-color: transparent;
-    width: 500px;
+    width: 800px;
     h2{
         text-align: center;
         color: var(--second-color);
+    }
+    .visit{
+        position: absolute;
+        left: 25%;
+        margin-bottom: 100px;
     }
     .manage{
         a{
             margin-left: 25px;
         }
+    }
+    hr{
+        margin-top: 100px;
+        margin-bottom: 20px;
     }
 }
 
@@ -223,6 +243,7 @@ form h2 {
     box-shadow: 5px 10px 25px var(--primary-color);
     padding: 40px;
     border-radius: 10px;
+    width: 1000px;
 }
 
 .sort-buttons{
@@ -241,7 +262,7 @@ form h2 {
     border-radius: 0px 30px 30px 30px;
     word-wrap: break-word;
     white-space: normal;
-    width: 1000px;
+    width: 800px;
     margin: 0 auto 30px;
 }
 

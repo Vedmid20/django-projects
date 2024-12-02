@@ -8,7 +8,7 @@
         <div id="detail">
             <div id="header-of-post">
                <h1>{{ blogpost.title }} by {{ blogpost.owner }}</h1>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalEmail" style="width: 200px;">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalEmail" style="width: 200px; height: 50px;">
                   Send email
                 </button>
             </div>
@@ -51,7 +51,8 @@
 
                 {% if comment.owner == request.user %}
                     <div style="margin-top: 10px;">
-                        <a href="{% url 'blog:update-comment' blogpost.slug %}">d</a>
+                        <a href="{% url 'blog:update-comment' slug=blogpost.slug comment_slug=comment.slug %}" class="btn edit" style="width: 150px;">Edit</a>
+                        <a href="{% url 'blog:delete-comment' slug=blogpost.slug comment_slug=comment.slug %}" class="btn delete" style="width: 150px;">Delete</a>
                     </div>
                 {% endif %}
             </div>
